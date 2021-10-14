@@ -1,4 +1,4 @@
-package constant;
+package makingUp;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
