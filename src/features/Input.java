@@ -56,7 +56,7 @@ public class Input {
 
     }
 
-    public static JComboBox drawComboBox(String[] items, int height, int weight, int border_radius){
+    public static JComboBox<String> drawComboBox(String[] items, int height, int weight, int border_radius){
 
         JComboBox<String> comboBox = new JComboBox<>(items);
 
@@ -85,8 +85,7 @@ public class Input {
         return checkBox;
     }
 
-
-    class CustomBorder implements Border {
+    static class CustomBorder implements Border {
         private final int radius;
 
         public CustomBorder(int radius){
