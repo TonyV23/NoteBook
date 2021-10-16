@@ -8,6 +8,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
+import features.Menu;
+
 public class Driver extends JFrame{
     public Driver(){
         super("Note Book App");
@@ -17,7 +19,8 @@ public class Driver extends JFrame{
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int closingW = JOptionPane.showConfirmDialog(Driver.this,"Are you sure you want to exit?","Exit",JOptionPane.YES_NO_OPTION);
+                int closingW = JOptionPane.showConfirmDialog(Driver.this,
+                        "Are you sure you want to exit?","Exit",JOptionPane.YES_NO_OPTION);
                 if (closingW == JOptionPane.YES_OPTION){
                     Driver.this.dispose();
                 }
@@ -27,6 +30,7 @@ public class Driver extends JFrame{
         this.setLocationRelativeTo(null);
         
         JPanel contentPane = (JPanel) this.getContentPane();
+        contentPane.add(Menu.createMenuBar());
         
     }
     public static void main(String[] args) throws Exception{
