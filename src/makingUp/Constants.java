@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-public class constant {
+public class Constants {
     public static final String ARIAL_FONT = "Arial";
     public static final String CALIBRI_FONT = "Calibri";
     public static final String CAMBRIA_FONT = "Cambria";

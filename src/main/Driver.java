@@ -11,12 +11,13 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 public class Driver extends JFrame{
     public Driver(){
         super("Note Book App");
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setMinimumSize(new Dimension(700,400));
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int closingW = JOptionPane.showConfirmDialog(Driver.this,"Are you sure?","Exit",JOptionPane.YES_NO_OPTION);
+                int closingW = JOptionPane.showConfirmDialog(Driver.this,"Are you sure you want to exit?","Exit",JOptionPane.YES_NO_OPTION);
                 if (closingW == JOptionPane.YES_OPTION){
                     Driver.this.dispose();
                 }
