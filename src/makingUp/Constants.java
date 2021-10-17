@@ -1,6 +1,7 @@
 package makingUp;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -154,4 +155,19 @@ public class Constants {
             System.out.println( "Paste" );
         }
     };
+    public static AbstractAction actAbout = new AbstractAction() {
+        {
+            putValue( Action.NAME,"About NoteBookApp");
+            putValue( Action.SMALL_ICON,new ImageIcon("resource/icons/about.png"));
+            putValue( Action.MNEMONIC_KEY,KeyEvent.VK_A);
+            putValue( Action.SHORT_DESCRIPTION,"About (CTRL+I)" );
+            putValue( Action.ACCELERATOR_KEY,KeyStroke.getKeyStroke(KeyEvent.VK_I,KeyEvent.CTRL_DOWN_MASK));
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.print("SOFTWARE created by Viper23 <https://github.com/TonyV23> <htonnycarlos@gmail.com>");
+        }
+    };
+    public static final Dimension maximum_size = new Dimension(800,450);
+    public static final Dimension minimum_size = new Dimension(300,100);
 }

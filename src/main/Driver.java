@@ -1,20 +1,22 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 
 import features.Menu;
+import features.WindowController;
+import makingUp.Constants;
 
 public class Driver extends JFrame{
     public Driver(){
-        super("Note Book App");
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setMinimumSize(new Dimension(700,400));
+        super("NoteBookApp");
+        this.setMaximumSize(new Dimension(Constants.maximum_size));
+        this.setMinimumSize(new Dimension(Constants.maximum_size));
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -26,12 +28,11 @@ public class Driver extends JFrame{
                 }
             }
         });
-        this.setBackground(Color.DARK_GRAY);        
         this.setLocationRelativeTo(null);
-        
+        this.setJMenuBar(Menu.createMenuBar());
+
         JPanel contentPane = (JPanel) this.getContentPane();
-        contentPane.add(Menu.createMenuBar());
-        
+        contentPane.add(WindowController.createTextArea());
     }
     public static void main(String[] args) throws Exception{
         UIManager.setLookAndFeel(new NimbusLookAndFeel());
