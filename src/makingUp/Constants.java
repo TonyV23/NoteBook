@@ -107,7 +107,7 @@ public class Constants {
         }
 
         @Override public void actionPerformed( ActionEvent e ) {
-            /*JFileChooser file_chooser = new JFileChooser();
+            JFileChooser file_chooser = new JFileChooser();
             file_chooser.setDialogTitle("Save as ...");
             file_chooser.showSaveDialog(null);
             file_chooser.setVisible(true);
@@ -133,7 +133,7 @@ public class Constants {
                     i.printStackTrace();
                 }
             }
-        }*/
+        }
     };
 
     public static AbstractAction actExit = new AbstractAction() {
