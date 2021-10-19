@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class Constants {
     public static final String ARIAL_FONT = "Arial";
@@ -27,7 +31,6 @@ public class Constants {
         }
 
         @Override public void actionPerformed( ActionEvent e ) {
-            System.out.println( "New" );
         }
     };
 
@@ -41,8 +44,44 @@ public class Constants {
         }
 
         @Override public void actionPerformed( ActionEvent e ) {
-            System.out.println( "Open" );
+
+            JFileChooser file_chooser = new JFileChooser();
+            file_chooser.setDialogTitle("Opening file");
+            file_chooser.showOpenDialog(null);
+            file_chooser.setVisible(true);
+            String file_selected = file_chooser.getSelectedFile().getAbsolutePath();
+
+            FileReader file_reader =null;
+            BufferedReader buffered_reader = null;
+            JTextArea j_text_area = null;
+
+            try {
+                file_reader = new FileReader(file_selected);
+                buffered_reader = new BufferedReader(file_reader);
+
+                String file_content="";
+                StringBuilder display_file_content= new StringBuilder();
+
+                while((file_content=buffered_reader.readLine())!=null)
+                    display_file_content.append(file_content).append("\r\n");
+
+                assert false;
+                j_text_area.setText(display_file_content.toString());
+
+            }catch (Exception exception){
+                exception.printStackTrace();
+            }finally
+                {
+                    try {
+                        assert file_reader != null;
+                        file_reader.close();
+                        assert buffered_reader != null;
+                        buffered_reader.close();
+                    }catch (Exception ex) { ex.printStackTrace();
+                }
+            }
         }
+
     };
 
     public static AbstractAction actSave = new AbstractAction() {
@@ -68,8 +107,33 @@ public class Constants {
         }
 
         @Override public void actionPerformed( ActionEvent e ) {
-            System.out.println( "Save as" );
-        }
+            /*JFileChooser file_chooser = new JFileChooser();
+            file_chooser.setDialogTitle("Save as ...");
+            file_chooser.showSaveDialog(null);
+            file_chooser.setVisible(true);
+            String file_selected = file_chooser.getSelectedFile().getAbsolutePath();
+
+            FileWriter file_writer =null;
+            BufferedWriter buffered_writer = null;
+            JTextArea j_text_area = null;
+
+            try {
+                file_writer = new FileWriter(file_selected);
+                buffered_writer= new BufferedWriter(file_writer);
+                assert false;
+                buffered_writer.write(j_text_area.getText());
+            }catch (Exception exception){
+                exception.printStackTrace();
+            }finally {
+                try {
+                    assert buffered_writer != null;
+                    buffered_writer.close();
+                    file_writer.close();
+                }catch (Exception i){
+                    i.printStackTrace();
+                }
+            }
+        }*/
     };
 
     public static AbstractAction actExit = new AbstractAction() {
