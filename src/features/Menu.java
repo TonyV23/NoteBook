@@ -42,6 +42,7 @@ public class Menu {
         JMenu j_menu_help = new JMenu("Help");
         j_menu_help.setMnemonic('H');
         j_menu_help.add(Constants.actShowHelp);
+        j_menu_help.add(Constants.sendComments);
         j_menu_help.addSeparator();
         j_menu_help.add(Constants.actAbout);
 

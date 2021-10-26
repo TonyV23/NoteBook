@@ -249,6 +249,20 @@ public class Constants {
 
         }
     };
+    public static AbstractAction sendComments = new AbstractAction() {
+        {
+            putValue( Action.NAME,"Send Us feed back");
+            //putValue( Action.SMALL_ICON,new ImageIcon("resource/icons/a"));
+            putValue( Action.MNEMONIC_KEY,KeyEvent.VK_V);
+            putValue( Action.SHORT_DESCRIPTION,"htonnycarlos@gmail.com" );
+            //putValue( Action.ACCELERATOR_KEY,KeyStroke.getKeyStroke(KeyEvent.VK_I,KeyEvent.CTRL_DOWN_MASK));
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    };
+
 
     public static final Dimension maximum_size = new Dimension(800,450);
     public static final Dimension minimum_size = new Dimension(300,100);
