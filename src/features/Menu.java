@@ -46,7 +46,7 @@ public class Menu {
 
         j_menu_bar.add(j_menu_file);
         j_menu_bar.add(j_menu_edit);
-  //      j_menu_bar.add(j_menu_window);
+        j_menu_bar.add(j_menu_window);
         j_menu_bar.add(j_menu_help);
 
         return j_menu_bar;
