@@ -33,12 +33,9 @@ public class Menu {
         j_menu_edit.addSeparator();
         j_menu_edit.add(Constants.actCut);
 
-        /*JMenu j_menu_window = new JMenu("Window");
+        JMenu j_menu_window = new JMenu("Window");
         j_menu_window.setMnemonic('W');
-        j_menu_window.add(new JMenuItem("Zoom in"));
-        j_menu_window.add(new JMenuItem("Zoom out"));
-        j_menu_window.add(new JMenuItem("Default Zoom"));
-*/
+
         JMenu j_menu_help = new JMenu("Help");
         j_menu_help.setMnemonic('H');
         j_menu_help.add(Constants.actShowHelp);
