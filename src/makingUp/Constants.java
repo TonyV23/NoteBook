@@ -262,8 +262,6 @@ public class Constants {
 
         }
     };
-
-
     public static final Dimension maximum_size = new Dimension(800,450);
     public static final Dimension minimum_size = new Dimension(300,100);
 }
