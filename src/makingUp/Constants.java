@@ -4,10 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 
 public class Constants {
     public static final String ARIAL_FONT = "Arial";
@@ -31,6 +28,7 @@ public class Constants {
         }
 
         @Override public void actionPerformed( ActionEvent e ) {
+
         }
     };
 
@@ -87,14 +85,20 @@ public class Constants {
     public static AbstractAction actSave = new AbstractAction() {
         {
             putValue( Action.NAME, "Save File" );
-            putValue( Action.SMALL_ICON, new ImageIcon( "resource/icons/save.png" ) );
+            putValue( Action.SMALL_ICON, new ImageIcon( "resource\\icons\\save.png" ) );
             putValue( Action.MNEMONIC_KEY, KeyEvent.VK_S );
             putValue( Action.SHORT_DESCRIPTION, "Save file (CTRL+S)" );
             putValue( Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK ) );
         }
 
         @Override public void actionPerformed( ActionEvent e ) {
-            System.out.println( "Save" );
+            JFileChooser file_chooser = new JFileChooser();
+            file_chooser.setDialogTitle("Save file");
+            int user_selection = file_chooser.showSaveDialog(null);
+            if (user_selection == JFileChooser.APPROVE_OPTION){
+                File file_to_save = file_chooser.getSelectedFile();
+                System.out.print("file to save :"+file_to_save.getAbsolutePath());
+            }
         }
     };
 

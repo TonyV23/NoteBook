@@ -6,7 +6,6 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-import javax.swing.plaf.synth.SynthLookAndFeel;
 
 import features.Menu;
 import features.WindowController;
