@@ -233,7 +233,7 @@ public class Constants {
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(null,"SOFTWARE developed by Viper23 <https://github.com/TonyV23> htonnycarlos@gmail.com","About NoteBookApp",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"SOFTWARE developed by Viper23 <https://github.com/TonyV23/NoteBook> htonnycarlos@gmail.com","About NoteBookApp",JOptionPane.INFORMATION_MESSAGE);
         }
     };
     public static AbstractAction actShowHelp = new AbstractAction() {
