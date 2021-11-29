@@ -284,6 +284,26 @@ public class Constants {
         }
     };
 
+    public static AbstractAction actEnlarge = new AbstractAction() {
+        {
+            putValue( Action.NAME, "Enlarge Window" );
+            putValue( Action.MNEMONIC_KEY, KeyEvent.VK_E );
+        }
+        @Override public void actionPerformed( ActionEvent e ) {
+
+        }
+    };
+
+    public static AbstractAction actReduce = new AbstractAction() {
+        {
+            putValue( Action.NAME, "Reduce Window" );
+            putValue( Action.MNEMONIC_KEY, KeyEvent.VK_E );
+        }
+        @Override public void actionPerformed( ActionEvent e ) {
+
+        }
+    };
+
     public static final Dimension maximum_size = new Dimension(800,450);
     public static final Dimension minimum_size = new Dimension(300,100);
 }
