@@ -36,7 +36,12 @@ public class Menu {
         JMenu j_menu_window = new JMenu("Window");
         j_menu_window.setMnemonic('W');
         j_menu_window.add(Constants.actZoomIn);
+        j_menu_window.addSeparator();
         j_menu_window.add(Constants.actZoomOut);
+        j_menu_window.addSeparator();
+        j_menu_window.add(Constants.actEnlarge);
+        j_menu_window.addSeparator();
+        j_menu_window.add(Constants.actReduce);
 
         JMenu j_menu_help = new JMenu("Help");
         j_menu_help.setMnemonic('H');
