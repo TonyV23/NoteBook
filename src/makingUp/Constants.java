@@ -28,7 +28,6 @@ public class Constants {
         }
 
         @Override public void actionPerformed( ActionEvent e ) {
-
         }
     };
 
@@ -262,6 +261,29 @@ public class Constants {
 
         }
     };
+    public static AbstractAction actZoomIn = new AbstractAction() {
+        {
+            putValue( Action.NAME, "Zoom In" );
+            putValue( Action.MNEMONIC_KEY, KeyEvent.VK_Z );
+            putValue( Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_PLUS, KeyEvent.CTRL_DOWN_MASK ) );
+        }
+
+        @Override public void actionPerformed( ActionEvent e ) {
+
+        }
+    };
+
+    public static AbstractAction actZoomOut = new AbstractAction() {
+        {
+            putValue( Action.NAME, "Zoom Out" );
+            putValue( Action.MNEMONIC_KEY, KeyEvent.VK_Z );
+            putValue( Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.CTRL_DOWN_MASK ) );
+        }
+        @Override public void actionPerformed( ActionEvent e ) {
+
+        }
+    };
+
     public static final Dimension maximum_size = new Dimension(800,450);
     public static final Dimension minimum_size = new Dimension(300,100);
 }
