@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.*;
 
 public class Constants {
     public static final String ARIAL_FONT = "Arial";
@@ -27,7 +28,6 @@ public class Constants {
         }
 
         @Override public void actionPerformed( ActionEvent e ) {
-            System.out.println( "New" );
         }
     };
 
@@ -41,21 +41,63 @@ public class Constants {
         }
 
         @Override public void actionPerformed( ActionEvent e ) {
-            System.out.println( "Open" );
+
+            JFileChooser file_chooser = new JFileChooser();
+            file_chooser.setDialogTitle("Opening file");
+            file_chooser.showOpenDialog(null);
+            file_chooser.setVisible(true);
+            String file_selected = file_chooser.getSelectedFile().getAbsolutePath();
+
+            FileReader file_reader =null;
+            BufferedReader buffered_reader = null;
+            JTextArea j_text_area = null;
+
+            try {
+                file_reader = new FileReader(file_selected);
+                buffered_reader = new BufferedReader(file_reader);
+
+                String file_content="";
+                StringBuilder display_file_content= new StringBuilder();
+
+                while((file_content=buffered_reader.readLine())!=null)
+                    display_file_content.append(file_content).append("\r\n");
+
+                assert false;
+                j_text_area.setText(display_file_content.toString());
+
+            }catch (Exception exception){
+                exception.printStackTrace();
+            }finally
+                {
+                    try {
+                        assert file_reader != null;
+                        file_reader.close();
+                        assert buffered_reader != null;
+                        buffered_reader.close();
+                    }catch (Exception ex) { ex.printStackTrace();
+                }
+            }
         }
+
     };
 
     public static AbstractAction actSave = new AbstractAction() {
         {
             putValue( Action.NAME, "Save File" );
-            putValue( Action.SMALL_ICON, new ImageIcon( "resource/icons/save.png" ) );
+            putValue( Action.SMALL_ICON, new ImageIcon( "resource\\icons\\save.png" ) );
             putValue( Action.MNEMONIC_KEY, KeyEvent.VK_S );
             putValue( Action.SHORT_DESCRIPTION, "Save file (CTRL+S)" );
             putValue( Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK ) );
         }
 
         @Override public void actionPerformed( ActionEvent e ) {
-            System.out.println( "Save" );
+            JFileChooser file_chooser = new JFileChooser();
+            file_chooser.setDialogTitle("Save file");
+            int user_selection = file_chooser.showSaveDialog(null);
+            if (user_selection == JFileChooser.APPROVE_OPTION){
+                File file_to_save = file_chooser.getSelectedFile();
+                System.out.print("file to save :"+file_to_save.getAbsolutePath());
+            }
         }
     };
 
@@ -68,7 +110,32 @@ public class Constants {
         }
 
         @Override public void actionPerformed( ActionEvent e ) {
-            System.out.println( "Save as" );
+            JFileChooser file_chooser = new JFileChooser();
+            file_chooser.setDialogTitle("Save as ...");
+            file_chooser.showSaveDialog(null);
+            file_chooser.setVisible(true);
+            String file_selected = file_chooser.getSelectedFile().getAbsolutePath();
+
+            FileWriter file_writer =null;
+            BufferedWriter buffered_writer = null;
+            JTextArea j_text_area = null;
+
+            try {
+                file_writer = new FileWriter(file_selected);
+                buffered_writer= new BufferedWriter(file_writer);
+                assert false;
+                buffered_writer.write(j_text_area.getText());
+            }catch (Exception exception){
+                exception.printStackTrace();
+            }finally {
+                try {
+                    assert buffered_writer != null;
+                    buffered_writer.close();
+                    file_writer.close();
+                }catch (Exception i){
+                    i.printStackTrace();
+                }
+            }
         }
     };
 
@@ -165,9 +232,78 @@ public class Constants {
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.print("SOFTWARE created by Viper23 <https://github.com/TonyV23> <htonnycarlos@gmail.com>");
+            JOptionPane.showMessageDialog(null,"SOFTWARE developed by Viper23 <https://github.com/TonyV23/NoteBook> htonnycarlos@gmail.com","About NoteBookApp",JOptionPane.INFORMATION_MESSAGE);
         }
     };
+    public static AbstractAction actShowHelp = new AbstractAction() {
+        {
+            putValue( Action.NAME,"View the Help");
+            //putValue( Action.SMALL_ICON,new ImageIcon("resource/icons/a"));
+            putValue( Action.MNEMONIC_KEY,KeyEvent.VK_V);
+            putValue( Action.SHORT_DESCRIPTION,"https://github.com/TonyV23/NoteBook" );
+            //putValue( Action.ACCELERATOR_KEY,KeyStroke.getKeyStroke(KeyEvent.VK_I,KeyEvent.CTRL_DOWN_MASK));
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    };
+    public static AbstractAction sendComments = new AbstractAction() {
+        {
+            putValue( Action.NAME,"Send Us feed back");
+            //putValue( Action.SMALL_ICON,new ImageIcon("resource/icons/a"));
+            putValue( Action.MNEMONIC_KEY,KeyEvent.VK_V);
+            putValue( Action.SHORT_DESCRIPTION,"htonnycarlos@gmail.com" );
+            //putValue( Action.ACCELERATOR_KEY,KeyStroke.getKeyStroke(KeyEvent.VK_I,KeyEvent.CTRL_DOWN_MASK));
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    };
+    public static AbstractAction actZoomIn = new AbstractAction() {
+        {
+            putValue( Action.NAME, "Zoom In" );
+            putValue( Action.MNEMONIC_KEY, KeyEvent.VK_Z );
+            putValue( Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_PLUS, KeyEvent.CTRL_DOWN_MASK ) );
+        }
+
+        @Override public void actionPerformed( ActionEvent e ) {
+
+        }
+    };
+
+    public static AbstractAction actZoomOut = new AbstractAction() {
+        {
+            putValue( Action.NAME, "Zoom Out" );
+            putValue( Action.MNEMONIC_KEY, KeyEvent.VK_Z );
+            putValue( Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.CTRL_DOWN_MASK ) );
+        }
+        @Override public void actionPerformed( ActionEvent e ) {
+
+        }
+    };
+
+    public static AbstractAction actEnlarge = new AbstractAction() {
+        {
+            putValue( Action.NAME, "Enlarge Window" );
+            putValue( Action.MNEMONIC_KEY, KeyEvent.VK_E );
+        }
+        @Override public void actionPerformed( ActionEvent e ) {
+
+        }
+    };
+
+    public static AbstractAction actReduce = new AbstractAction() {
+        {
+            putValue( Action.NAME, "Reduce Window" );
+            putValue( Action.MNEMONIC_KEY, KeyEvent.VK_E );
+        }
+        @Override public void actionPerformed( ActionEvent e ) {
+
+        }
+    };
+
     public static final Dimension maximum_size = new Dimension(800,450);
     public static final Dimension minimum_size = new Dimension(300,100);
 }
